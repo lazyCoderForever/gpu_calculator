@@ -48,6 +48,15 @@ body {
 .fluid-col {
   height: 100%;
 }
+@media (min-width: 600px) and (max-width: 921px) {
+  .container {
+    max-width: 100%;
+    width: 100%;
+  }
+  .row .col {
+    padding: 0.2rem;
+  }
+}
 
 @media screen and (max-width: 599px) {
   .container {

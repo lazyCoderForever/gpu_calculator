@@ -2,26 +2,40 @@
   <aside class="col m1 l1">
     <div class="sidebar-wraper">
       <ul class="sidebar-menu_list">
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-0"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-0"></span>
+          </a>
         </li>
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-1"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-1"></span>
+          </a>
         </li>
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-2"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-2"></span>
+          </a>
         </li>
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-3"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-3"></span>
+          </a>
         </li>
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-4"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-4"></span>
+          </a>
         </li>
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-5"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-5"></span>
+          </a>
         </li>
-        <li class="sibebar-menu_list-link">
-          <a href="#" class="sidebar-icon-6"></a>
+        <li class="sibebar-menu_list-item">
+          <a href="#" class="sibebar-menu_list-item_link">
+            <span class="sidebar-icon sidebar-icon-6"></span>
+          </a>
         </li>
       </ul>
     </div>
@@ -39,34 +53,58 @@ export default {
 .sidebar-wraper {
   max-width: 100px;
   width: 100%;
+  margin-top: 2px;
   background-color: #ffffff;
   .sibebar-menu_list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    %sidebar-icon {
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: initial;
-    }
-    @for $i from 0 through 6 {
-      .sidebar-icon-#{$i} {
-        @extend %sidebar-icon;
-        $length: -31px * $i;
-        background-image: url();
-      }
-    }
-    &-link {
+    &-item {
       display: block;
       width: 100%;
       height: 60px;
-      a {
+      &_link {
         display: block;
         width: 100%;
         height: 100%;
-        background: gray;
+        .sidebar-icon {
+          display: block;
+          width: 100%;
+          height: 100%;
+          filter: grayscale(90%) opacity(70%) brightness(1);
+          background-size: 20px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          transition: 0.2s;
+          &:hover {
+            box-shadow: -14px 1px 0px -11px rgba(82, 106, 229, 1) inset;
+            filter: grayscale(0) opacity(1) brightness(1);
+            background-color: $sidebar_background_hover;
+          }
+
+          &-0 {
+            background-image: url('../assets/img/rocket.svg');
+          }
+          &-1 {
+            background-image: url('../assets/img/picture.svg');
+          }
+          &-2 {
+            background-image: url('../assets/img/notes.svg');
+          }
+          &-3 {
+            background-image: url('../assets/img/wallet.svg');
+          }
+          &-4 {
+            background-image: url('../assets/img/calculator.svg');
+          }
+          &-5 {
+            background-image: url('../assets/img/gear.svg');
+          }
+          &-6 {
+            background-image: url('../assets/img/layers.svg');
+          }
+        }
       }
     }
   }
