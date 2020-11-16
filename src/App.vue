@@ -3,6 +3,7 @@
     <Header />
     <div class="row">
       <SidebarMenu />
+      <MainFrame />
     </div>
   </div>
 </template>
@@ -10,14 +11,14 @@
 <script>
 import Header from './components/Header.vue'
 import SidebarMenu from './components/SidebarMenu.vue'
-import Steps from './components/Steps.vue'
+import MainFrame from './components/MainFrame.vue'
 
 export default {
   name: 'App',
   components: {
     Header,
     SidebarMenu,
-    Steps,
+    MainFrame,
   },
 }
 </script>
