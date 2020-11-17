@@ -1,14 +1,35 @@
 <template>
-  <div class="col s12">
-    <h1>ProjectDetails</h1>
+  <div class="col s12 m10 l10 main-frame">
+    <div class="row">
+      <Render />
+      <Details />
+      <Frames />
+      <PcSettings />
+    </div>
   </div>
 </template>
 
 <script>
+import Details from './Details.vue'
+import Frames from './Frames.vue'
+import PcSettings from './PcSettings.vue'
+import Render from './Render.vue'
 export default {
-  name: 'ProjectDetails',
+  name: 'PrMain',
+  components: {
+    Render,
+    Details,
+    Frames,
+    PcSettings,
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@media screen and (max-width: 476px) {
+  .main-frame {
+    background-color: $mobile_background_color;
+  }
+}
+</style>

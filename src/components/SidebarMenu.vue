@@ -1,5 +1,5 @@
 <template>
-  <aside class="col m1 l1">
+  <aside class="col m1 l1 hide-on-small-only">
     <div class="sidebar-wraper">
       <ul class="sidebar-menu_list">
         <li class="sibebar-menu_list-item">

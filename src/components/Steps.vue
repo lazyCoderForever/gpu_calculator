@@ -1,10 +1,12 @@
 <template>
-  <div class="steps-wraper">
-    <ul class="steps">
-      <li class="step step-0 line"><span class="step-value ">1</span></li>
-      <li class="step step-1"><span class="step-value">2</span></li>
-      <li class="step step-2 line"><span class="step-value ">3</span></li>
-    </ul>
+  <div class="col m1 l1 hide-on-small-only">
+    <div class="steps-wraper">
+      <ul class="steps">
+        <li class="step step-0 line"><span class="step-value ">1</span></li>
+        <li class="step step-1"><span class="step-value">2</span></li>
+        <li class="step step-2 line"><span class="step-value ">3</span></li>
+      </ul>
+    </div>
   </div>
 </template>
 
