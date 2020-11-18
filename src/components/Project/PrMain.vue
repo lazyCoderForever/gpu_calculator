@@ -5,11 +5,13 @@
       <Details />
       <Frames />
       <PcSettings />
+      <CalculatedData />
     </div>
   </div>
 </template>
 
 <script>
+import CalculatedData from './CalculatedData.vue'
 import Details from './Details.vue'
 import Frames from './Frames.vue'
 import PcSettings from './PcSettings.vue'
@@ -21,6 +23,7 @@ export default {
     Details,
     Frames,
     PcSettings,
+    CalculatedData,
   },
 }
 </script>
