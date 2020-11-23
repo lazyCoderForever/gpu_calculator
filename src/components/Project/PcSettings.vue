@@ -2,7 +2,11 @@
   <div class="col s12 m12 l12">
     <div class="gpu-settings-wraper card-wraper">
       <div class="gpu-card">
-        <h3 class="gpu-h3 global-h3">Your PC</h3>
+        <button class="gpu-card-delete_mobile">
+          <span class="cross"></span>
+        </button>
+        <h3 class="gpu-h3 gpu-h3-main global-h3">Your PC</h3>
+        <h3 class="gpu-h3 gpu-h3-mobile global-h3">Chose Your PC specs</h3>
         <div class="gpu-inputS-wraper">
           <div class="gpu-wraper">
             <span class="gpu-input-title">Graphics card</span>
@@ -67,6 +71,9 @@
       </div>
       <div class="gpu-card">
         <div class="gpu-inputS-wraper">
+          <button class="gpu-card-delete_mobile">
+            <span class="cross"></span>
+          </button>
           <div class="gpu-wraper">
             <span class="gpu-input-title">Graphics card</span>
             <select
@@ -149,12 +156,20 @@ export default {
 <style scoped lang="scss">
 .gpu-settings-wraper {
   .gpu-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    .gpu-card-delete_mobile {
+      @include cross(12px, 12px, none);
+    }
+    .gpu-h3-mobile {
+      display: none;
+    }
     .gpu-inputS-wraper {
       display: flex;
       align-items: center;
+
       .gpu-card-delete {
         display: block;
         width: 20px;
@@ -253,6 +268,79 @@ export default {
       line-height: 18px;
 
       color: #ffffff;
+    }
+  }
+}
+
+@media screen and (max-width: 746px) {
+  .gpu-settings-wraper {
+    .calculate-btn-wraper {
+      padding: 20px 0;
+    }
+    .gpu-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .gpu-inputS-wraper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 306px;
+        width: 100%;
+        .gpu-card-delete {
+          display: none;
+        }
+        .gpu-wraper {
+          margin: 14px auto 14px auto;
+          .gpu-input {
+            &-title {
+              color: $card_main_color;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 599px) {
+  .gpu-settings-wraper {
+    padding: 0;
+    margin: 16px 15px;
+    background-color: transparent;
+    .gpu-card {
+      margin: 8px auto 0 auto;
+      padding: 20px 0;
+      background: #ffffff;
+      .gpu-card-delete_mobile {
+        display: block;
+      }
+      .gpu-h3-main {
+        display: none;
+      }
+      .gpu-h3-mobile {
+        display: block;
+        margin-top: 13px;
+      }
+      .gpu-inputS-wraper {
+        max-width: 200px;
+        .gpu-wraper {
+          margin: 17px auto 0 auto;
+        }
+      }
+    }
+    .add-gpu-card {
+      justify-content: center;
+      background-color: #ffffff;
+      &_title {
+        margin-left: 30px;
+        line-height: 17px;
+        text-align: center;
+      }
+    }
+    .calculate-btn-wraper {
+      padding: 20px 0;
+      background-color: #ffffff;
     }
   }
 }

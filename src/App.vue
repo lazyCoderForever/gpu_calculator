@@ -5,11 +5,13 @@
       <SidebarMenu />
       <Steps />
       <PrMain />
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
+import Footer from './components/Footer.vue'
 import Header from './components/Header.vue'
 import PrMain from './components/Project/PrMain.vue'
 import SidebarMenu from './components/SidebarMenu.vue'
@@ -22,6 +24,7 @@ export default {
     SidebarMenu,
     Steps,
     PrMain,
+    Footer,
   },
 }
 </script>
@@ -48,7 +51,9 @@ export default {
 body {
   font-family: $main_font;
 }
-
+.container {
+  overflow: hidden;
+}
 .fluid-col {
   height: 100%;
 }
@@ -71,6 +76,7 @@ select {
   border-radius: 4px;
   border: none;
   box-sizing: border-box;
+  box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.07);
 }
 .basic-input::placeholder {
   color: $input_text_color;
@@ -91,14 +97,34 @@ input[type='text']:not(.browser-default):focus:not([readonly]) {
 }
 
 .card-wraper {
+  position: relative;
   margin: 5px auto;
   padding: 15px 20px;
   background-color: $card_background;
+  &::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 10px;
+    width: 0;
+    height: 0;
+    border-top: 23px solid transparent;
+    border-bottom: 23px solid transparent;
+
+    border-right: 23px solid $card_background;
+  }
 }
 
 /*
 ---------------------------           MEDIA QUARES            ----------------------------------------
 */
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+}
 
 @media screen and (max-width: 1244px) {
   .basic-input,
@@ -121,6 +147,10 @@ input[type='text']:not(.browser-default):focus:not([readonly]) {
     max-width: 100%;
     width: 100%;
   }
+  .card-wraper {
+    margin: 0 20px;
+    background-color: #ffffff;
+  }
 }
 
 @media screen and (max-width: 476px) {
@@ -133,8 +163,14 @@ input[type='text']:not(.browser-default):focus:not([readonly]) {
     font-weight: 600;
   }
   .card-wraper {
-    margin: 0 auto;
-    background-color: #ffffff;
+    margin: 0 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .basic-input,
+  input[type='text']:not(.browser-default) {
+    max-width: 140px;
   }
 }
 </style>

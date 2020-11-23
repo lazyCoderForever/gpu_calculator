@@ -1,6 +1,10 @@
 <template>
   <div class="alert-wraper ">
-    <span class="alert-img"></span>
+    <img
+      src="../../assets/img/alert-icon.svg"
+      alt="alert-icon"
+      class="alert-img"
+    />
     <p class="alert-text">
       This estimation is approximate. It is based only on comparison of capacity
       between your PC and our servers. Try a free test to get more accurate
@@ -34,10 +38,16 @@ export default {
     display: block;
     width: 30px;
     height: 24px;
-    background-image: url('../../assets/img/alert-icon.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .alert-wraper {
+    align-items: flex-start;
+    .alert-text {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
 }
 </style>

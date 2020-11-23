@@ -32,4 +32,11 @@ export default {
     color: $capital_color;
   }
 }
+
+@media screen and (max-width: 476px) {
+  .render-wraper {
+    border-radius: 4px;
+    margin: 16px 15px 0px;
+  }
+}
 </style>

@@ -19,8 +19,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .steps-wraper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .steps {
     display: flex;
+    flex-basis: 638px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -45,15 +49,11 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-
       &-0 {
-        flex-basis: 300px;
-      }
-      &-1 {
-        flex-basis: 100px;
+        padding: 95px 0;
       }
       &-2 {
-        flex-basis: 200px;
+        padding: 70px 0;
       }
       &-value {
         display: flex;
@@ -65,6 +65,25 @@ export default {
         color: #ffffff;
         background-color: $blue;
         border-radius: 15px;
+      }
+    }
+  }
+}
+/*
+---------------------------           MEDIA QUARES            ----------------------------------------
+*/
+
+@media screen and (max-width: 921px) {
+  .steps-wraper {
+    .steps {
+      flex-basis: 675px;
+      .step {
+        &-0 {
+          padding: 95px 0;
+        }
+        &-2 {
+          padding: 70px 0;
+        }
       }
     }
   }

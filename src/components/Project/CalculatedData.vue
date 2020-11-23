@@ -83,4 +83,28 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 599px) {
+  .calculated-data-wtaper {
+    padding: 20px 5px;
+    .calculated-data {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 75px auto 20px;
+      .calculated-data_field {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin: 0 auto 0 0;
+        &-input {
+          font-size: 14px;
+        }
+        .warning-mark {
+          display: none;
+        }
+      }
+    }
+  }
+}
 </style>

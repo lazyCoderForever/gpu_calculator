@@ -7,7 +7,7 @@
             <img src="../assets/img/logo.png" alt="Logo" />
           </a>
         </div>
-        <div class="col m9 l8 hide-on-small-only">
+        <div class="col m9 l9 hide-on-small-only">
           <div class="user-data">
             <span class="user-data_avatar">
               <img src="../assets/img/avatar.png" alt="avatar" />
@@ -15,14 +15,20 @@
             <span class="user-data_mail">a.nikitina@animarender.com</span>
           </div>
         </div>
-        <div class="col s8 m2 l3 valign-wrapper right-align">
+        <div class="col s8 m2 l2 valign-wrapper right-align">
           <span class="AP">741.19 AP </span>
         </div>
       </div>
       <div class="col s4 m3 l3 push-l1 options">
         <div class="option notification"></div>
-        <div class="burger-menu-wraper  ">
-          <nav class="burger-menu "></nav>
+        <div class="burger-menu-wraper ">
+          <input
+            type="checkbox"
+            name="open-mobile-menu"
+            id="open-mobile-menu"
+          />
+          <label for="open-mobile-menu" class="burger-menu"> </label>
+          <MobileMenu />
         </div>
         <div class="option lang  hide-on-small-only"></div>
         <div class="option exite  hide-on-small-only"></div>
@@ -32,8 +38,13 @@
 </template>
 
 <script>
+import MobileMenu from './MobileMenu.vue'
+
 export default {
   name: 'Header',
+  components: {
+    MobileMenu,
+  },
 }
 </script>
 
@@ -135,11 +146,28 @@ export default {
     align-items: center;
     width: 100%;
     height: 100%;
+    #open-mobile-menu:checked {
+      & ~ .mobile-menu-wraper {
+        width: 100vw;
+        opacity: 1;
+        z-index: 500;
+      }
+      & ~ .burger-menu {
+        background-color: transparent;
+        &::after {
+          transform: rotate(45deg) translateY(-1px) translateX(-1px);
+        }
+        &::before {
+          transform: rotate(-45deg);
+        }
+      }
+    }
     .burger-menu {
       max-width: 18px;
       width: 100%;
       height: 2px;
       background-color: $blue;
+      z-index: 600;
       &:after,
       &:before {
         content: '';
@@ -147,6 +175,7 @@ export default {
         width: 18px;
         height: 2px;
         background-color: $blue;
+        transition: 0.3s;
       }
       &:after {
         transform: translateY(3px);

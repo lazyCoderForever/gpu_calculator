@@ -1,5 +1,5 @@
 <template>
-  <div class="col s12 m10 l10 main-frame">
+  <div class="col s12 m10 l9 main-frame">
     <div class="row">
       <Render />
       <Details />
@@ -33,6 +33,11 @@ export default {
 @media screen and (max-width: 476px) {
   .main-frame {
     background-color: $mobile_background_color;
+  }
+}
+@media screen and (max-width: 320px) {
+  .main-frame {
+    padding: 0 0 230px 0;
   }
 }
 </style>

@@ -72,12 +72,14 @@ export default {
 @media screen and (max-width: 476px) {
   .details-wraper {
     position: relative;
+    .details-h3 {
+      margin: 10px auto;
+    }
     .details {
       max-width: 50%;
-
       flex-direction: column;
       align-items: flex-end;
-      margin: 0 auto;
+      margin: 0 50% 0 auto;
       .detail {
         margin: 8px 0;
         &:nth-child(even) {
