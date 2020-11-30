@@ -4,21 +4,23 @@
       <AlertCard />
       <div class="calculated-data">
         <label for="render-time" class="calculated-data_field">
-          <span>Render time</span>
+          <span class="calculated-data_field-title">Render time</span>
           <input
             type="text"
             placeholder="0.25 server/hr or 0.25 hr on 1 server"
             name="render-time"
             class="calculated-data_field-input"
+            v-bind:value="calculatedData.time"
           />
         </label>
         <label for="price" class="calculated-data_field">
-          <span>Price</span>
+          <span class="calculated-data_field-title">Price</span>
           <input
             type="text"
             placeholder="0.31 AP"
             name="price"
             class="calculated-data_field-input"
+            v-bind:value="calculatedData.price"
           />
           <span class="warning-mark"></span>
         </label>
@@ -28,12 +30,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AlertCard from './AlertCard.vue'
 export default {
   name: 'CalculatedData',
   components: {
     AlertCard,
   },
+  computed: mapState(['calculatedData']),
 }
 </script>
 
@@ -97,6 +101,10 @@ export default {
         align-items: flex-start;
         width: 100%;
         margin: 0 auto 0 0;
+        &-title {
+          margin: 12px 12px;
+          font-weight: 600;
+        }
         &-input {
           font-size: 14px;
         }

@@ -1,171 +1,224 @@
 <template>
   <div class="col s12 m12 l12">
     <div class="gpu-settings-wraper card-wraper">
-      <div class="gpu-card">
-        <button class="gpu-card-delete_mobile">
-          <span class="cross"></span>
-        </button>
-        <h3 class="gpu-h3 gpu-h3-main global-h3">Your PC</h3>
-        <h3 class="gpu-h3 gpu-h3-mobile global-h3">Chose Your PC specs</h3>
-        <div class="gpu-inputS-wraper">
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Graphics card</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="Gt">Gt</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Graphics card line</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="4xx">4xx</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Graphics card model</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="GT 420">GT 420</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Number or cards</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="Gt">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <button class="gpu-card-delete">
-            <span class="minus"></span>
-          </button>
-        </div>
-      </div>
-      <div class="gpu-card">
-        <div class="gpu-inputS-wraper">
-          <button class="gpu-card-delete_mobile">
+      <h3 class="gpu-h3 gpu-h3-main global-h3">Your PC</h3>
+      <div class="gpu-card-wraper">
+        <div
+          v-for="(card, index) in this.gpuCards"
+          :key="card._id"
+          :id="card._id"
+          class="gpu-card"
+        >
+          <h3 v-if="index === 0" class="gpu-h3 gpu-h3-mobile global-h3">
+            Chose Your PC specs
+          </h3>
+          <button class="gpu-card-delete_mobile" @click="deleteCard">
             <span class="cross"></span>
           </button>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Graphics card</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="Gt">Gt</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
+          <div class="gpu-inputS-wraper">
+            <div class="gpu-wraper">
+              <span class="gpu-input-title">Graphics card</span>
+              <select
+                name="type-card"
+                class="basic-input gpu-input"
+                data-key="card"
+                @change="changeCardData"
+              >
+                <option
+                  v-for="(value, name) in gpuData.list"
+                  v-bind:key="name"
+                  :value="name"
+                  >{{ name }}</option
+                >
+              </select>
+              <span class="arrow"></span>
+            </div>
+            <div class="gpu-wraper">
+              <span class="gpu-input-title">Graphics card line</span>
+              <select
+                name="type-card"
+                class="basic-input gpu-input"
+                data-key="line"
+                @change="changeCardData"
+              >
+                <option
+                  v-for="(value, name) in gpuData.list[card.graphicsCard]"
+                  v-bind:key="name"
+                  :value="name"
+                  >{{ name }}</option
+                >
+              </select>
+              <span class="arrow"></span>
+            </div>
+            <div class="gpu-wraper">
+              <span class="gpu-input-title">Graphics card model</span>
+              <select
+                name="type-card"
+                class="basic-input gpu-input"
+                data-key="model"
+                @change="changeCardData"
+              >
+                <option
+                  v-for="value in gpuData.list[card.graphicsCard][
+                    card.graphicsCardline
+                  ]"
+                  v-bind:key="value"
+                  :value="value"
+                  >{{ value }}</option
+                >
+              </select>
+              <span class="arrow"></span>
+            </div>
+            <div class="gpu-wraper">
+              <span class="gpu-input-title">Number of cards</span>
+              <select
+                name="type-card"
+                class="basic-input gpu-input"
+                data-key="number"
+                @change="changeCardData"
+              >
+                <option v-for="value in 10" v-bind:key="value" :value="value">{{
+                  value
+                }}</option>
+              </select>
+              <span class="arrow"></span>
+            </div>
+            <button class="gpu-card-delete" @click="deleteCard">
+              <span class="minus"></span>
+            </button>
           </div>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Graphics card line</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="4xx">4xx</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Graphics card model</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="GT 420">GT 420</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <div class="gpu-wraper">
-            <span class="gpu-input-title">Number or cards</span>
-            <select
-              name="type-card"
-              id="type-card"
-              class="basic-input gpu-input"
-            >
-              <option value="Gt">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-            <span class="arrow"></span>
-          </div>
-          <button class="gpu-card-delete">
-            <span class="minus"></span>
-          </button>
         </div>
       </div>
       <div class="add-gpu-card">
         <span class="add-gpu-card_title">Add another type card</span>
-        <button class="plus"></button>
+        <button class="plus" @click="addCard"></button>
       </div>
       <div class="calculate-btn-wraper">
-        <button class="calculate-btn">Calculate</button>
+        <button class="calculate-btn" @click="calculate">Calculate</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { generateConsoleData } from '../../assets/scripts/generateConsoleData'
+import { framesValidate } from '../../assets/scripts/framesValidation'
+import * as gpu from '../../assets/static/gpu.json'
+
 export default {
   name: 'PcSettings',
+  data: () => ({
+    gpuData: gpu.default,
+  }),
+  computed: {
+    ...mapState({
+      validationData: 'validationData',
+      gpuCards: 'gpuCards',
+      renderInfo: 'renderInfo',
+    }),
+  },
+
+  methods: {
+    changeCardData(e) {
+      const PARENT_LVL = 4
+      let parent = e.target
+      const TARGET_KEY = e.target.dataset.key
+
+      for (let i = 0; i <= PARENT_LVL; i++) {
+        parent = parent.parentNode
+        i++
+      }
+
+      this.$store.commit('SET_GPU_DATA', {
+        gpuValue: e.target.value,
+        gpuId: parent.id,
+        key: TARGET_KEY,
+      })
+    },
+    deleteCard(e) {
+      const MAX_LVL = 4
+      let card = e.target
+
+      if (this.gpuCards.length >= 2) {
+        for (var index = 0; index < MAX_LVL; index++) {
+          card = card.parentNode
+          if (card.classList.contains('gpu-card')) {
+            index = MAX_LVL
+          }
+        }
+        card.style.left = '-100%'
+        card.style.opacity = '0'
+        setTimeout(() => {
+          card.style.display = 'none'
+          this.$store.commit('DEL_GPU_CARD', {
+            gpuId: card.id,
+          })
+        }, 300)
+      }
+    },
+    addCard() {
+      this.$store.commit('ADD_GPU_CARD')
+    },
+    calculate() {
+      if (!this.validationData.frames) {
+        framesValidate(this.validationData.frames)
+      } else {
+        const gpuCards = this.gpuCards,
+          gpuData = this.gpuData,
+          renderInfo = this.renderInfo
+
+        let clietBenchmark = 0,
+          renderTimeHours = Number(renderInfo.renderTime.hours) || 1,
+          renderTimeMinutes = Number(renderInfo.renderTime.minutes) || 1,
+          clientRenderTime = renderTimeHours * 60 + renderTimeMinutes,
+          FramesCount = Number(renderInfo.framesCount) || '1',
+          RenderTime,
+          Price
+
+        gpuCards.forEach((userCard) => {
+          let cardBenchmark = Number(
+              gpuData.benchmark[userCard.graphicsCardModel]
+            ),
+            countCards = Number(userCard.numberOfCards)
+
+          clietBenchmark += cardBenchmark * countCards
+        })
+
+        RenderTime = Math.floor(
+          (clietBenchmark / 50) * clientRenderTime * FramesCount
+        )
+        Price = RenderTime * 10
+
+        this.$store.commit('SET_CALCULATED_DATA', {
+          RenderTime,
+          Price,
+        })
+
+        generateConsoleData(gpuCards, renderInfo, clietBenchmark, RenderTime)
+      }
+    },
+  },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .gpu-settings-wraper {
+  .gpu-card-delete_mobile {
+    @include cross(12px, 12px, none);
+  }
+  .gpu-h3-mobile {
+    display: none;
+  }
   .gpu-card {
     position: relative;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    .gpu-card-delete_mobile {
-      @include cross(12px, 12px, none);
-    }
-    .gpu-h3-mobile {
-      display: none;
-    }
+    opacity: 1;
+    transition: 0.3s;
+
     .gpu-inputS-wraper {
       display: flex;
       align-items: center;
@@ -266,7 +319,7 @@ export default {
       font-weight: bold;
       font-size: 12px;
       line-height: 18px;
-
+      cursor: pointer;
       color: #ffffff;
     }
   }
@@ -308,19 +361,19 @@ export default {
     padding: 0;
     margin: 16px 15px;
     background-color: transparent;
+    .gpu-h3-main {
+      display: none;
+    }
+    .gpu-h3-mobile {
+      display: block;
+      margin-top: 13px;
+    }
     .gpu-card {
       margin: 8px auto 0 auto;
       padding: 20px 0;
       background: #ffffff;
       .gpu-card-delete_mobile {
         display: block;
-      }
-      .gpu-h3-main {
-        display: none;
-      }
-      .gpu-h3-mobile {
-        display: block;
-        margin-top: 13px;
       }
       .gpu-inputS-wraper {
         max-width: 200px;

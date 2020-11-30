@@ -1,7 +1,7 @@
 <template>
   <div class="header-wraper">
     <header class="row ">
-      <div class="col s8 m9 l8 fluid-col  valign-wrapper ">
+      <div class="col s8 m9 l9 fluid-col  valign-wrapper ">
         <div class="col s4 m1 l1 valign-wrapper">
           <a href="#" class="logo-icon">
             <img src="../assets/img/logo.png" alt="Logo" />
@@ -15,11 +15,11 @@
             <span class="user-data_mail">a.nikitina@animarender.com</span>
           </div>
         </div>
-        <div class="col s8 m2 l2 valign-wrapper right-align">
+        <div class="col s8 m2 l2 offset-l1 valign-wrapper">
           <span class="AP">741.19 AP </span>
         </div>
       </div>
-      <div class="col s4 m3 l3 push-l1 options">
+      <div class="col s4 m3 l3  options">
         <div class="option notification"></div>
         <div class="burger-menu-wraper ">
           <input
@@ -63,6 +63,8 @@ export default {
   font-size: 16px;
 
   .AP {
+    width: 100%;
+    text-align: right;
     color: $input_text_color;
   }
   .options {

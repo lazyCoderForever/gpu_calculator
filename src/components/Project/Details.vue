@@ -5,12 +5,24 @@
       <div class="details">
         <label for="animation-detail" class="detail">
           Animation
-          <input type="checkbox" name="animation" id="animation-detail" />
+          <input
+            type="radio"
+            name="animation"
+            id="animation-detail"
+            value="animate"
+            v-model="sceneType"
+          />
           <div class="checkmark"></div>
         </label>
         <label for="still-detail" class="detail ">
           Still
-          <input type="checkbox" name="still" id="still-detail" />
+          <input
+            type="radio"
+            name="still"
+            id="still-detail"
+            value="static"
+            v-model="sceneType"
+          />
           <div class="checkmark"></div>
         </label>
       </div>
@@ -21,6 +33,16 @@
 <script>
 export default {
   name: 'Details',
+  computed: {
+    sceneType: {
+      get() {
+        return this.$store.state.renderInfo.sceneType
+      },
+      set(value) {
+        this.$store.commit('SET_SCENE', value)
+      },
+    },
+  },
 }
 </script>
 

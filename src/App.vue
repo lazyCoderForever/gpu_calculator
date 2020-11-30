@@ -64,8 +64,19 @@ body {
 select:focus {
   outline: 1px solid $blue;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.basic-input,
+input[type='number']:not(.browser-default) {
+  appearance: textfield;
+  margin: 0;
+}
 .basic-input,
 input[type='text']:not(.browser-default),
+input[type='number']:not(.browser-default),
 select {
   max-width: 156px;
   width: 100%;
@@ -81,7 +92,8 @@ select {
 .basic-input::placeholder {
   color: $input_text_color;
 }
-input[type='text']:not(.browser-default):focus:not([readonly]) {
+input[type='text']:not(.browser-default):focus:not([readonly]),
+input[type='number']:not(.browser-default):focus:not([readonly]) {
   border: none;
   box-shadow: 0 1px 0 0 $blue;
 }
@@ -140,6 +152,11 @@ input[type='text']:not(.browser-default):focus:not([readonly]) {
   .row .col {
     padding: 0.2rem;
   }
+  .card-wraper {
+    &::before {
+      display: none;
+    }
+  }
 }
 
 @media screen and (max-width: 599px) {
@@ -150,6 +167,11 @@ input[type='text']:not(.browser-default):focus:not([readonly]) {
   .card-wraper {
     margin: 0 20px;
     background-color: #ffffff;
+  }
+  .card-wraper {
+    &::before {
+      display: none;
+    }
   }
 }
 

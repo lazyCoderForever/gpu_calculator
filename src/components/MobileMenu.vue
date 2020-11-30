@@ -85,7 +85,7 @@ export default {
         display: flex;
         height: 75px;
         align-content: center;
-        justify-content: flex-start;
+        justify-content: center;
         padding: 0 20px;
         &_avatar {
           display: flex;
@@ -109,6 +109,30 @@ export default {
           background-size: auto;
           background-repeat: no-repeat;
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .mobile-menu-wraper {
+    .mobile-menu {
+      &_list-nav {
+        margin-top: 40px;
+      }
+      .user-data-mobile {
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+        &_avatar {
+          justify-content: center;
+        }
+        &_mail {
+          justify-content: center;
+        }
+        &_exite {
+          margin: 0 auto;
         }
       }
     }
