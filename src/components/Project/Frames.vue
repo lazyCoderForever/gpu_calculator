@@ -107,7 +107,7 @@ export default {
     transition: 0.3s;
     border-bottom: 1px solid rgba($color: red, $alpha: 0.3);
     &::before {
-      content: '* Заполните хотя бы одно поле';
+      content: '* Fill in at least one field';
       position: absolute;
       bottom: -20px;
       right: 19%;
